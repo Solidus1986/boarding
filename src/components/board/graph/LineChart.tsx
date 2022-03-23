@@ -11,7 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
-import { aggregatesBusiness } from '../../../services/api/Polygon';
+import Polygon from '../../../services/api/Polygon';
 import useResponsive from '../../../hooks/useResponsive';
 
 ChartJS.register(
@@ -71,21 +71,19 @@ export const formatTimeStamp = (timestamp: number) => {
 
 export default function LineChart(props) {
 
+  const { aggregatesBusiness } = Polygon()
+
   const [aggregates, setAggregates] = useState(null)
   const [dataPrice, setDataPrice] = useState(null)
   const [dataVolume, setDataVolume] = useState(null)
 
   const { screenType } = useResponsive()
 
-  useEffect(() => {
-    console.log("useEffect Line");
-    
+  useEffect(() => {    
     if (sessionStorage.getItem(`${props.symbol}_aggregates`)) {
-      console.log("useEffect Line if ok");
       const dataAggregates = JSON.parse(sessionStorage.getItem(`${props.symbol}_aggregates`))
       setAggregates(dataAggregates)
     } else {
-      console.log("useEffect Line else ok");
       aggregatesBusiness(props.symbol, setAggregates)
     }
 
@@ -148,7 +146,7 @@ export default function LineChart(props) {
     }
     setDataPrice(formatDataPrice)
     setDataVolume(formatDataVolume)
-
+    console.log(aggregates, '???')
 
 
   }, [props])

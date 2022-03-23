@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './OnBoard.module.scss';
 import PieChart from './graph/PieChart';
 import LineChart from './graph/LineChart';
-import { dailyOpenClose, groupedDaily } from '../../services/api/Polygon';
+import Polygon from '../../services/api/Polygon';
 import Input from '../../elements/input/Input';
 import { useInput } from '../../hooks/useInput';
 import Button from '../../elements/button/Button';
+import { DataContext } from '../../context/dataContext';
+import Modal from '../modal/Modal';
 
 export const formatTimeStamp = (timestamp: number) => {
   const date = new Date(timestamp).toLocaleDateString("en-IN");
@@ -14,9 +16,14 @@ export const formatTimeStamp = (timestamp: number) => {
 
 function OnBoard() {
 
+  const { dailyOpenClose, groupedDaily } = Polygon();
+
+  const { dataLimit } = useContext(DataContext);
+
   const business = [{ name: "Microsoft", symbol: "MSFT" }, { name: "Apple", symbol: "AAPL" }, { name: "Amazon", symbol: "AMZN" }, { name: "Alphabet", symbol: "GOOGL" }];
 
   const [choiceBusiness, setChoiceBusiness] = useState(business[0].symbol);
+
   const [dailyBusiness, setDailyBusiness] = useState({
     // afterHours: null,
     // close: null,
@@ -33,7 +40,6 @@ function OnBoard() {
   const [groupedDailyBusiness, setGroupedDailyBusiness] = useState({})
 
   const { value: dateSelect, bind: bindDateSelect, reset: resetDateSelect } = useInput('');
-  console.log(dateSelect, 'ma  new date');
 
   const options = business.map((element) => {
     return <option key={element.symbol} value={element.symbol} label={element.name}></option>;
@@ -77,23 +83,22 @@ function OnBoard() {
     } else {
       groupedDaily('2022-03-10', setGroupedDailyBusiness)
     }
-    console.log(groupedDailyBusiness)
-    if(Object.values(dailyBusiness).map(item => item === null)){
-      console.log('null');
-    }
-    
-    
+    console.log(groupedDailyBusiness) 
+
   }, [choiceBusiness])
 
   return (
     <div className={styles.board}>
+      {dataLimit &&
+        <Modal/>
+      }
       <div className={styles.boardleft}>
-        <select className={styles.select} onChange={handleBusiness}>{options}</select>
+        <select className={styles.select} onChange={handleBusiness} disabled={dataLimit ? true : false} >{options}</select>
         <div>
           <h4>{choiceBusiness}</h4>
           <form className={styles.datePicker} onSubmit={handleDateSelectSubmit}>
             <label for="start">Select date:</label>
-            <Input type="date" id="start" name="datePiker" required {...bindDateSelect} />
+            <Input type="date" id="start" name="datePiker" required {...bindDateSelect} disabled={dataLimit ? true : false} />
             <Button name={"Submit"} type={"submit"} />
           </form>
           {Object.values(dailyBusiness).length > 0 &&

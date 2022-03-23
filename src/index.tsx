@@ -5,13 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { UserContextProvider } from './context/userContext';
+import { DataContextProvider } from './context/dataContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <UserContextProvider>
-      <BrowserRouter basename='/boarding-trade'>
-        <App />
-      </BrowserRouter>
+      <DataContextProvider>
+        <BrowserRouter basename='/boarding-trade'>
+          <App />
+        </BrowserRouter>
+      </DataContextProvider>
     </UserContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
