@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/boarding/static/css/main.02acfa94.css",
+    "main.js": "/boarding/static/js/main.c5910baf.js",
+    "static/js/787.16f0a280.chunk.js": "/boarding/static/js/787.16f0a280.chunk.js",
+    "static/media/management.png": "/boarding/static/media/management.89e0d78a19da1a6adc53.png",
+    "index.html": "/boarding/index.html",
+    "main.02acfa94.css.map": "/boarding/static/css/main.02acfa94.css.map",
+    "main.c5910baf.js.map": "/boarding/static/js/main.c5910baf.js.map",
+    "787.16f0a280.chunk.js.map": "/boarding/static/js/787.16f0a280.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.02acfa94.css",
+    "static/js/main.c5910baf.js"
+  ]
+}
