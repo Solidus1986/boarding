@@ -21,7 +21,7 @@ const App: FC = () => {
     <div className="app">
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/profil" element={<Profil />} />
           <Route path="/board" element={<Board />} />
         </Routes>

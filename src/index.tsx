@@ -9,7 +9,7 @@ import { UserContextProvider } from './context/userContext';
 ReactDOM.render(
   <React.StrictMode>
     <UserContextProvider>
-      <BrowserRouter>
+      <BrowserRouter basename='/boarding-trade'>
         <App />
       </BrowserRouter>
     </UserContextProvider>
