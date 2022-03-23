@@ -1,0 +1,33 @@
+.btn {
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: 15px;
+  margin: .5em;
+  transition: 0.3s;
+
+  &Primary{
+    background-color: transparent;
+    color: white;
+    border: 1px solid #61dafb;
+    
+    &:hover {
+      background-color: #61dafb;
+      color: #282c34;
+    }
+  }
+  
+  &Secondary {
+    background-color: #61dafb;
+    color: #282c34;
+    border: 1px solid #61dafb;
+
+    
+    &:hover {
+      background-color: transparent;
+      color: #FFFFFF;
+    }
+  }
+}

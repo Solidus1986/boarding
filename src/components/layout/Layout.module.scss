@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+
+  padding: 0;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  text-align: center;
+
+}
+
+.block {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+}
+
+header {
+  flex: 0 1 auto;
+}
+
+main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+
+}
+
+footer {
+  flex: 0 1 60px;
+  color: white;
+  line-height: 60px;
+}

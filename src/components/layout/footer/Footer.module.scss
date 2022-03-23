@@ -1,0 +1,33 @@
+.footer {
+  color: rgb(97, 218, 251);
+  background-color: #282c34;
+  border-top: 1px solid transparent;
+  transition: ease-in-out .3s;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 1em;
+
+  &:hover {
+    border-top: 1px solid rgb(97, 218, 251);
+  }
+}
+
+.social {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: .5em;
+  width: 100px;
+
+  &> * {
+    cursor: pointer;
+    color: white;
+    transition: ease-in-out .3s;
+  }
+  & > *:hover {
+    color: rgb(97, 218, 251);
+    transform: scale(1.2);
+  }
+}

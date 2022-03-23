@@ -1,0 +1,16 @@
+.form {
+  margin: .5em;
+}
+
+.forminput {
+  outline: none;
+  color: #61dafb;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #61dafb;
+  transition: ease-in-out .3s;
+  
+  &:focus {
+    border-bottom: 1px solid transparent;
+  }
+}
